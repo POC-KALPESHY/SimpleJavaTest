@@ -12,7 +12,7 @@ pipeline:
         build: <+input>
   stages:
     - stage:
-        name: build
+        name: "Build "
         identifier: build
         description: ""
         type: CI
@@ -45,3 +45,15 @@ pipeline:
                               paths:
                                 - "**/*.xml"
                           enableTestSplitting: false
+              - step:
+                  type: Run
+                  name: Build
+                  identifier: Build
+                  spec:
+                    shell: Sh
+                    command: mvn package
+          caching:
+            enabled: false
+            paths: []
+          buildIntelligence:
+            enabled: false
