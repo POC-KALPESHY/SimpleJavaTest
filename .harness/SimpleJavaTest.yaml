@@ -12,7 +12,7 @@ pipeline:
         build: <+input>
   stages:
     - stage:
-        name: "Build "
+        name: Build
         identifier: build
         description: ""
         type: CI
@@ -45,13 +45,25 @@ pipeline:
                               paths:
                                 - "**/*.xml"
                           enableTestSplitting: false
-              - step:
-                  type: Run
-                  name: Build
-                  identifier: Build
-                  spec:
-                    shell: Sh
-                    command: mvn package
+                    - step:
+                        type: Run
+                        name: Build
+                        identifier: Build
+                        spec:
+                          shell: Sh
+                          command: mvn package
+                    - step:
+                        type: SaveCacheS3
+                        name: Upload Artifact
+                        identifier: UploadArtifact
+                        spec:
+                          connectorRef: <artifact-storage-connector>
+                          bucket: <artifact-bucket-name>
+                          region: <artifact-bucket-region>
+                          sourcePaths:
+                            - target/*.jar
+                          targetPath: artifacts/
+                          key: artifacts/<+pipeline.executionId>/artifact.jar
           caching:
             enabled: false
             paths: []
