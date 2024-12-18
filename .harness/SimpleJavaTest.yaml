@@ -103,7 +103,7 @@ pipeline:
                         config: default
                   - step:
                       type: Snyk
-                      name: Snyk_1
+                      name: Snyk
                       identifier: Snyk_1
                       spec:
                         mode: orchestration
@@ -117,3 +117,20 @@ pipeline:
                         privileged: true
                         auth:
                           access_token: 23a25124-830b-42f9-b91c-7440d6e376be
+                  - step:
+                      type: Sonarqube
+                      name: Sonarqube
+                      identifier: Sonarqube
+                      spec:
+                        mode: orchestration
+                        config: default
+                        target:
+                          type: repository
+                          detection: auto
+                        advanced:
+                          log:
+                            level: info
+                        auth:
+                          access_token: sqa_88adfe10069f5ad464996c65bf37f65161f7df68
+                          domain: http://172.26.61.190:9000
+                          ssl: true
