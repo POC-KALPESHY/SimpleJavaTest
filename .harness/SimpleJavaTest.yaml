@@ -74,26 +74,6 @@ pipeline:
             steps:
               - parallel:
                   - step:
-                      type: Sonarqube
-                      name: Sonarqube
-                      identifier: Sonarqube
-                      spec:
-                        mode: orchestration
-                        config: default
-                        target:
-                          type: repository
-                          detection: auto
-                        advanced:
-                          log:
-                            level: info
-                          properties:
-                            sonar.organization: poc-gitlab-ci-cd
-                            sonar.projectKey: poc-gitlab-ci-cd_harness-simple-java-test
-                        auth:
-                          access_token: d9fae163680f0107cb09134b58665032059873f6
-                          domain: https://sonarcloud.io
-                          ssl: true
-                  - step:
                       type: Semgrep
                       name: Semgrep_1
                       identifier: Semgrep_1
