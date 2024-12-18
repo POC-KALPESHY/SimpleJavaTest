@@ -86,10 +86,14 @@ pipeline:
                         advanced:
                           log:
                             level: info
+                        settings:
+                          sonar.organization: poc-gitlab-ci-cd
                         auth:
                           access_token: d9fae163680f0107cb09134b58665032059873f6
                           domain: https://sonarcloud.io
                           ssl: true
+                        tool:
+                          project_key: "poc-gitlab-ci-cd_gitlab-ci-cd-advance "
                   - step:
                       type: Semgrep
                       name: Semgrep_1
