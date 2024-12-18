@@ -1,0 +1,47 @@
+pipeline:
+  name: SimpleJavaTest
+  identifier: SimpleJavaTest
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.Github
+        repoName: POC-KALPESHY/SimpleJavaTest
+        build: <+input>
+  stages:
+    - stage:
+        name: build
+        identifier: build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - stepGroup:
+                  name: compile
+                  identifier: compile
+                  steps:
+                    - step:
+                        type: RunTests
+                        name: Test
+                        identifier: Test
+                        spec:
+                          language: Java
+                          buildTool: Maven
+                          args: clean test
+                          runOnlySelectedTests: true
+                          reports:
+                            type: JUnit
+                            spec:
+                              paths:
+                                - "**/*.xml"
+                          enableTestSplitting: false
