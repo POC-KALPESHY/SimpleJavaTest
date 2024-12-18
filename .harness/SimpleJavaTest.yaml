@@ -52,18 +52,6 @@ pipeline:
                         spec:
                           shell: Sh
                           command: mvn package
-                    - step:
-                        type: SaveCacheS3
-                        name: Upload Artifact
-                        identifier: UploadArtifact
-                        spec:
-                          connectorRef: <artifact-storage-connector>
-                          bucket: <artifact-bucket-name>
-                          region: <artifact-bucket-region>
-                          sourcePaths:
-                            - target/*.jar
-                          targetPath: artifacts/
-                          key: artifacts/<+pipeline.executionId>/artifact.jar
           caching:
             enabled: false
             paths: []
