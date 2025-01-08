@@ -51,7 +51,11 @@ pipeline:
                         identifier: Build
                         spec:
                           shell: Sh
-                          command: mvn package
+                          command: |-
+                            mvn package
+                            docker --version
+                            git --version
+                            java --version
           caching:
             enabled: false
             paths: []
