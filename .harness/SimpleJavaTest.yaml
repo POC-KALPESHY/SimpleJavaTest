@@ -137,6 +137,6 @@ pipeline:
                         auth:
                           access_token: d0e04e046cf660b600cbe1a293bf581f565f2a62
                           domain: https://sonarcloud.io
-                          ssl: true
+                          ssl: false
                         tool:
                           project_key: poc-kalpeshy_harnesspipelinejava
