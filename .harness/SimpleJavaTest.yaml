@@ -56,25 +56,6 @@ pipeline:
                             docker --version
                             git --version
                             java --version
-              - step:
-                  type: Sonarqube
-                  name: Sonarqube_3
-                  identifier: Sonarqube_3
-                  spec:
-                    mode: orchestration
-                    config: default
-                    target:
-                      type: repository
-                      detection: auto
-                    advanced:
-                      log:
-                        level: info
-                    auth:
-                      access_token: 2c422cf7217ee775adc80c992bc17810d549185e
-                      domain: https://sonarcloud.io
-                      ssl: false
-                    tool:
-                      project_key: poc-kalpeshy_harnesspipelinejava
           caching:
             enabled: false
             paths: []
