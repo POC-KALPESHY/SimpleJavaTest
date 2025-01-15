@@ -135,6 +135,8 @@ pipeline:
                           log:
                             level: info
                         auth:
-                          access_token: sqa_88adfe10069f5ad464996c65bf37f65161f7df68
-                          domain: http://172.26.61.190:9000
+                          access_token: "3e966f05f61000db06dbd162e4e28bd76b77cf81  "
+                          domain: https://sonarcloud.io
                           ssl: true
+                        tool:
+                          project_key: poc-kalpeshy_harnesspipelinejava
